@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizarra Digital - Colegio Montano</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        montano: {
+                            blue: '#1269A8',
+                            yellow: '#F7D615',
+                            teal: '#54887D',
+                            lightblue: '#88B5C7',
+                            olive: '#A6B046',
+                            bg: '#F2F5E9'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #F2F5E9;
+        }
+        .tab-btn.active {
+            background-color: #1269A8;
+            color: #ffffff;
+            border-bottom: 4px solid #F7D615;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-slate-800 flex flex-col justify-between">
+
+    <!-- Header / Barra Superior -->
+    <header class="bg-white shadow-md border-b-4 border-montano-yellow sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
+            <!-- Logo e Información Básica -->
+            <div class="flex items-center gap-4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyEop0yf6lZ7Jk9MILZxF1rBj4Oqs5esyhIQ&s" 
+                     alt="Colegio Montano" 
+                     class="h-14 w-auto object-contain"
+                     onerror="this.src='https://placehold.co/120x50/1269A8/ffffff?text=Montano'">
+                <div>
+                    <h1 class="text-xl font-bold text-montano-blue leading-tight">Colegio Montano</h1>
+                    <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Pizarra Digital Interactiva</p>
+                </div>
+            </div>
+
+            <!-- Datos Generales del Plan -->
+            <div class="hidden md:flex items-center gap-6 text-sm bg-slate-50 p-2 rounded-lg border border-slate-200">
+                <div>
+                    <span class="block text-xs font-bold text-slate-400">CURSO & TEMA</span>
+                    <span class="font-semibold text-montano-blue">Expresión Artística | Personajes de cuentos</span>
+                </div>
+                <div class="h-8 w-px bg-slate-300"></div>
+                <div>
+                    <span class="block text-xs font-bold text-slate-400">GRADO & UNIDAD</span>
+                    <span class="font-semibold text-slate-700">Tercero Primaria | U1 (Plan #6)</span>
+                </div>
+                <div class="h-8 w-px bg-slate-300"></div>
+                <div>
+                    <span class="block text-xs font-bold text-slate-400">DOCENTE & FECHA</span>
+                    <span class="font-semibold text-slate-700">Jorge Barrios | 27/01/2027</span>
+                </div>
+            </div>
+
+            <!-- Botón Pantalla Completa -->
+            <div>
+                <button onclick="toggleFullscreen()" class="bg-montano-blue hover:bg-sky-800 text-white font-semibold py-2 px-4 rounded-lg flex items-center gap-2 shadow-sm transition">
+                    <i class="fa-solid fa-expand"></i>
+                    <span class="hidden sm:inline">Pantalla Completa</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full">
+
+        <!-- Banner Formativo Institucional -->
+        <div class="bg-white rounded-xl p-5 shadow-sm border border-slate-200 mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Competencia e Indicador -->
+                <div class="space-y-3">
+                    <div class="bg-slate-50 p-3 rounded-lg border-l-4 border-montano-blue">
+                        <span class="text-xs font-bold uppercase text-montano-blue block">Competencia</span>
+                        <p class="text-sm font-medium text-slate-700">Expresa ideas, vivencias y situaciones imaginarias mediante composiciones pictóricas creativas.</p>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded-lg border-l-4 border-montano-teal">
+                        <span class="text-xs font-bold uppercase text-montano-teal block">Indicador de Logro</span>
+                        <p class="text-sm font-medium text-slate-700">2.3. Elabora una composición sobre «Personajes de cuentos», integrando elementos visuales, detalles propios y organización del espacio.</p>
+                    </div>
+                </div>
+
+                <!-- Propósito, Hábitos y Competencias Montano -->
+                <div class="space-y-3">
+                    <div class="flex flex-wrap gap-2 items-center">
+                        <span class="text-xs font-bold text-slate-500 uppercase w-full">Propósito Intencional:</span>
+                        <span class="px-3 py-1 bg-montano-yellow/30 text-yellow-900 font-bold text-xs rounded-full border border-montano-yellow"><i class="fa-solid fa-check mr-1"></i> CREATIVIDAD</span>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 items-center">
+                        <span class="text-xs font-bold text-slate-500 uppercase w-full">Competencias CM 2023–2028:</span>
+                        <span class="px-2.5 py-1 bg-sky-100 text-montano-blue text-xs font-semibold rounded-md border border-sky-200">Creatividad e innovación</span>
+                        <span class="px-2.5 py-1 bg-sky-100 text-montano-blue text-xs font-semibold rounded-md border border-sky-200">Aprendizaje autónomo y adaptabilidad</span>
+                        <span class="px-2.5 py-1 bg-sky-100 text-montano-blue text-xs font-semibold rounded-md border border-sky-200">Pensamiento crítico y resolución de problemas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navegación por Pestañas (Secuencia Didáctica) -->
+        <div class="flex flex-wrap gap-2 border-b border-slate-300 mb-6 bg-white p-2 rounded-t-xl shadow-sm">
+            <button onclick="switchTab('tab1')" id="btn-tab1" class="tab-btn active flex-1 py-3 px-4 rounded-lg text-slate-600 hover:bg-slate-100 transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-lightbulb"></i>
+                <span class="font-bold">I) Introducción Motivante</span>
+                <span class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded-full ml-1">10 min</span>
+            </button>
+            <button onclick="switchTab('tab2')" id="btn-tab2" class="tab-btn flex-1 py-3 px-4 rounded-lg text-slate-600 hover:bg-slate-100 transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-user-pen"></i>
+                <span class="font-bold">II) Tarea Individual</span>
+                <span class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded-full ml-1">45 min</span>
+            </button>
+            <button onclick="switchTab('tab3')" id="btn-tab3" class="tab-btn flex-1 py-3 px-4 rounded-lg text-slate-600 hover:bg-slate-100 transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-users"></i>
+                <span class="font-bold">III) Plenaria / Cierre</span>
+                <span class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded-full ml-1">5 min</span>
+            </button>
+        </div>
+
+        <!-- Contenido de las Pestañas -->
+        <div class="bg-white rounded-b-xl rounded-tr-xl p-6 shadow-md border border-slate-200 min-h-[350px]">
+            
+            <!-- PESTAÑA 1 -->
+            <div id="tab1" class="tab-content block space-y-6">
+                <div class="flex items-center justify-between border-b pb-3">
+                    <h2 class="text-xl font-bold text-montano-blue flex items-center gap-2">
+                        <i class="fa-solid fa-chalkboard-user"></i> Introducción Motivante
+                    </h2>
+                    <span class="bg-montano-yellow text-slate-900 font-bold text-xs px-3 py-1 rounded-full">Tiempo: 10 minutos</span>
+                </div>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 space-y-4">
+                    <h3 class="font-bold text-slate-800 text-lg">Descripción de la Actividad:</h3>
+                    <p class="text-slate-700 leading-relaxed text-base bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
+                        El docente explica el tema «Personajes de cuentos» y muestra ejemplos visuales para orientar el dibujo.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-montano-bg p-4 rounded-xl border border-montano-olive/30">
+                        <h4 class="font-bold text-montano-teal mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-boxes-packing"></i> Recursos Necesarios
+                        </h4>
+                        <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+                            <li>Imágenes de referencia</li>
+                            <li>Presentación</li>
+                            <li>Pizarra</li>
+                        </ul>
+                    </div>
+
+                    <!-- Botón Desplegable / Acordeón para Orientación del Docente -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <button onclick="toggleAccordion('acc1')" class="w-full flex justify-between items-center text-left font-bold text-montano-blue hover:text-sky-800">
+                            <span><i class="fa-solid fa-circle-info mr-2"></i> Orientación pedagógica / Sugerencias</span>
+                            <i id="acc1-icon" class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div id="acc1" class="hidden mt-3 text-sm text-slate-600 bg-white p-3 rounded-lg border border-slate-200 space-y-2">
+                            <p>Mostrar ilustraciones de cuentos clásicos y contemporáneos destacando rasgos físicos, expresión facial, vestuario y ambientación de los personajes para motivar la creatividad.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PESTAÑA 2 -->
+            <div id="tab2" class="tab-content hidden space-y-6">
+                <div class="flex items-center justify-between border-b pb-3">
+                    <h2 class="text-xl font-bold text-montano-blue flex items-center gap-2">
+                        <i class="fa-solid fa-palette"></i> Tarea Individual
+                    </h2>
+                    <span class="bg-montano-yellow text-slate-900 font-bold text-xs px-3 py-1 rounded-full">Tiempo: 45 minutos</span>
+                </div>
+
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 space-y-4">
+                    <h3 class="font-bold text-slate-800 text-lg">Descripción de la Actividad:</h3>
+                    <p class="text-slate-700 leading-relaxed text-base bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
+                        Cada estudiante realiza una composición original sobre «Personajes de cuentos», agrega detalles y aplica color.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-montano-bg p-4 rounded-xl border border-montano-olive/30">
+                        <h4 class="font-bold text-montano-teal mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-paintbrush"></i> Recursos Necesarios
+                        </h4>
+                        <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+                            <li>Hoja de dibujo</li>
+                            <li>Lápiz y borrador</li>
+                            <li>Crayones de madera</li>
+                            <li>Marcadores</li>
+                        </ul>
+                    </div>
+
+                    <!-- Acordeón / Pautas de Trabajo -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <button onclick="toggleAccordion('acc2')" class="w-full flex justify-between items-center text-left font-bold text-montano-blue hover:text-sky-800">
+                            <span><i class="fa-solid fa-list-check mr-2"></i> Pautas de Aplicación Técnica</span>
+                            <i id="acc2-icon" class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div id="acc2" class="hidden mt-3 text-sm text-slate-600 bg-white p-3 rounded-lg border border-slate-200 space-y-2">
+                            <p><strong>Paso 1:</strong> Elegir o inventar el personaje principal del cuento.</p>
+                            <p><strong>Paso 2:</strong> Dibujar la figura organizando el espacio de la página con elementos del entorno del cuento.</p>
+                            <p><strong>Paso 3:</strong> Aplicar color con crayones de madera y definir contornos/detalles con marcadores.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PESTAÑA 3 -->
+            <div id="tab3" class="tab-content hidden space-y-6">
+                <div class="flex items-center justify-between border-b pb-3">
+                    <h2 class="text-xl font-bold text-montano-blue flex items-center gap-2">
+                        <i class="fa-solid fa-comments"></i> Plenaria
+                    </h2>
+                    <span class="bg-montano-yellow text-slate-900 font-bold text-xs px-3 py-1 rounded-full">Tiempo: 5 minutos</span>
+                </div>
+
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 space-y-4">
+                    <h3 class="font-bold text-slate-800 text-lg">Descripción de la Actividad:</h3>
+                    <p class="text-slate-700 leading-relaxed text-base bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
+                        Dos estudiantes muestran su trabajo y comentan una característica del tema. El docente ofrece retroalimentación breve.
+                    </p>
+                </div>
+
+                <div class="bg-montano-bg p-4 rounded-xl border border-montano-olive/30">
+                    <h4 class="font-bold text-montano-teal mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-folder-open"></i> Recursos Necesarios
+                    </h4>
+                    <p class="text-sm text-slate-700">Obras realizadas por los estudiantes.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Instrumento de Evaluación Interactiva (Lista de Cotejo) -->
+        <div class="mt-8 bg-white rounded-xl p-6 shadow-md border border-slate-200">
+            <h3 class="text-lg font-bold text-montano-blue mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-clipboard-check"></i> Instrumento de Evaluación: Lista de Cotejo para la Plenaria
+            </h3>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-sm">
+                    <thead>
+                        <tr class="bg-slate-100 text-montano-blue border-b border-slate-200">
+                            <th class="p-3">Criterio de Evaluación</th>
+                            <th class="p-3 text-center w-28">Cumple (Sí)</th>
+                            <th class="p-3 text-center w-28">No Cumple (No)</th>
+                            <th class="p-3">Observaciones / Retroalimentación</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200">
+                        <tr>
+                            <td class="p-3 font-medium text-slate-700">1. Elaboración original de la composición «Personajes de cuentos».</td>
+                            <td class="p-3 text-center"><input type="checkbox" class="w-5 h-5 accent-montano-blue cursor-pointer"></td>
+                            <td class="p-3 text-center"><input type="checkbox" class="w-5 h-5 accent-red-500 cursor-pointer"></td>
+                            <td class="p-3"><input type="text" placeholder="Añadir comentario..." class="w-full p-1.5 border border-slate-200 rounded text-xs focus:ring-1 focus:ring-montano-blue outline-none"></td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-medium text-slate-700">2. Integración de elementos visuales, detalles propios y buena organización espacial.</td>
+                            <td class="p-3 text-center"><input type="checkbox" class="w-5 h-5 accent-montano-blue cursor-pointer"></td>
+                            <td class="p-3 text-center"><input type="checkbox" class="w-5 h-5 accent-red-500 cursor-pointer"></td>
+                            <td class="p-3"><input type="text" placeholder="Añadir comentario..." class="w-full p-1.5 border border-slate-200 rounded text-xs focus:ring-1 focus:ring-montano-blue outline-none"></td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-medium text-slate-700">3. Aplicación adecuada de técnicas de color utilizando los recursos requeridos.</td>
+                            <td class="p-3 text-center"><input type="checkbox" class="w-5 h-5 accent-montano-blue cursor-pointer"></td>
+                            <td class="p-3 text-center"><input type="checkbox" class="w-5 h-5 accent-red-500 cursor-pointer"></td>
+                            <td class="p-3"><input type="text" placeholder="Añadir comentario..." class="w-full p-1.5 border border-slate-200 rounded text-xs focus:ring-1 focus:ring-montano-blue outline-none"></td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-medium text-slate-700">4. Exposición clara durante la plenaria compartiendo una característica representativa del tema.</td>
+                            <td class="p-3 text-center"><input type="checkbox" class="w-5 h-5 accent-montano-blue cursor-pointer"></td>
+                            <td class="p-3 text-center"><input type="checkbox" class="w-5 h-5 accent-red-500 cursor-pointer"></td>
+                            <td class="p-3"><input type="text" placeholder="Añadir comentario..." class="w-full p-1.5 border border-slate-200 rounded text-xs focus:ring-1 focus:ring-montano-blue outline-none"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="bg-white border-t border-slate-200 py-3 mt-6 text-center text-xs text-slate-500">
+        <p>Colegio Montano &copy; 2027 | Modelo Formativo Montano - Plan Diario de Clase Presencial</p>
+    </footer>
+
+    <!-- Lógica de Interacción -->
+    <script>
+        // Cambio de Pestañas
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+
+            document.getElementById(tabId).classList.remove('hidden');
+            document.getElementById('btn-' + tabId).classList.add('active');
+        }
+
+        // Acordeones Desplegables
+        function toggleAccordion(accId) {
+            const content = document.getElementById(accId);
+            const icon = document.getElementById(accId + '-icon');
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+            }
+        }
+
+        // Función de Pantalla Completa
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.error(`Error al intentar activar pantalla completa: ${err.message}`);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+    </script>
+</body>
+</html>
